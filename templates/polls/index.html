@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+</head>
+<body>
+     {% if not question_list %}   {# 如果 question_list 不为空#}
+        <p>问题列表为空</p>
+     {% endif %}
+  <ul>
+    {% for q in question_list %}     {# 后端写的是字典，但是可以直接通过key名查找使用，不用加["xxx"] #}
+      <a href="/polls/{{ q.id }}">
+        <li>问题：{{ q.question_text }} 发布时间：{{ q.pub_date }}</li>
+      </a>
+    {% endfor %}
+  </ul>
+</body>
+</html>
