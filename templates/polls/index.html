@@ -10,7 +10,8 @@
      {% endif %}
   <ul>
     {% for q in question_list %}     {# 后端写的是字典，但是可以直接通过key名查找使用，不用加["xxx"] #}
-      <a href="/polls/{{ q.id }}">
+     {# 'detail' 是子路由中name='detail' 后面跟着参数 #}
+      <a href="{% url 'polls:detail' question_id %}">
         <li>问题：{{ q.question_text }} 发布时间：{{ q.pub_date }}</li>
       </a>
     {% endfor %}

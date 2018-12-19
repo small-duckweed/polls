@@ -4,6 +4,9 @@ from django.conf.urls import url   # django 1.x 路由写法
 # from .views import index   第一种引入文件的方法
 from . import views     #  第二种引入方法，   .为同级  ..为父级
 
+
+app_name = 'polls'   # 起一个名字
+
 urlpatterns = [
     # 首页 http:/ip:port/polls/
     path('', views.index, name='index'),
