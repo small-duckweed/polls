@@ -5,7 +5,7 @@ from django.conf.urls import url   # django 1.x 路由写法
 from . import views     #  第二种引入方法，   .为同级  ..为父级
 
 
-app_name = 'polls'   # 起一个名字
+app_name = 'polls'   # 起一个名字，  命名空间
 
 urlpatterns = [
     # 首页 http:/ip:port/polls/
@@ -15,9 +15,12 @@ urlpatterns = [
     # 问题详情页 ex：/polls/1/
     path('<int:question_id>/', views.detail, name='detail'),
     # 投票结果页  /polls/1/results/
-    path('<int:question_id>/results', views.results, name='results'),
+    path('<int:question_id>/results/', views.results, name='results'),
     # 去投票，选项计数加一  /polls/5/vote/
-    path('<int:question_id>/vote/', views.vote, name='vote')
+    path('<int:question_id>/vote/', views.vote, name='vote'),   # name也叫别名
+
+    # 通用视图示例
+    path('simple/', views.SimpleView.as_view(), name='simple')
 ]
 
 
